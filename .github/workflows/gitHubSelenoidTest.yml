@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  MavenBuildJobWithSelenoid:
+ MavenWithSelenoid:
     runs-on: ubuntu-latest
 
     steps:
