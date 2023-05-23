@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite verbose="1" name="Tests with selenoid">
+
+    <test name="Selenoid tests">
+        <classes>
+            <class name="org.demo.SelenoidTest"/>
+        </classes>
+    </test>
+
+</suite>
