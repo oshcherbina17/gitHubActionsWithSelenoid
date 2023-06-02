@@ -44,7 +44,7 @@ public class SelenoidTest {
         System.out.println(title);
         Assert.assertEquals(title, "Інтернет-магазин ROZETKA™: офіційний сайт найпопулярнішого онлайн-гіпермаркету в Україні",
                             "Title text not equals as expected");
-       /* Assert.assertTrue(title.contains("Інтернет-магазин ROZETKA™: офіційний сайт найпопулярнішого онлайн-гіпермаркету в Україні"));/*
+       /* Assert.assertTrue(title.contains("Інтернет-магазин ROZETKA™: офіційний сайт найпопулярнішого онлайн-гіпермаркету в Україні"));*/
         LOGGER.info("All ok.");
         driver.quit();
     }
