@@ -26,4 +26,4 @@ jobs:
       - name: Publish Test Results
         uses: EnricoMi/publish-unit-test-result-action@v1
         with:
-          files: target/surefire-reports/TEST-*.xml
+          files: TEST-*.xml
