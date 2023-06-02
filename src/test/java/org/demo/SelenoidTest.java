@@ -35,14 +35,16 @@ public class SelenoidTest {
         driver.manage().window().maximize();
         driver.get(url);
         
+        String title = driver.getTitle();
+        
         try {
             wait(5000);
         } catch (Exception e) {}
-        
-        String title = driver.getTitle();
-       /* Assert.assertEquals(title, "Інтернет-магазин ROZETKA™: офіційний сайт найпопулярнішого онлайн-гіпермаркету " +
-                "в Україні", "Title text not equals as expected");*/
-        Assert.assertTrue(title.contains("Інтернет-магазин ROZETKA"));
+       
+        System.out.println(title);
+        Assert.assertEquals(title, "Інтернет-магазин ROZETKA™: офіційний сайт найпопулярнішого онлайн-гіпермаркету в Україні",
+                            "Title text not equals as expected");
+       /* Assert.assertTrue(title.contains("Інтернет-магазин ROZETKA™: офіційний сайт найпопулярнішого онлайн-гіпермаркету в Україні"));/*
         LOGGER.info("All ok.");
         driver.quit();
     }
