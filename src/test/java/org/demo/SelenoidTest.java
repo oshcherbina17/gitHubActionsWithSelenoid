@@ -11,6 +11,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SelenoidTest {
     private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
@@ -36,14 +38,20 @@ public class SelenoidTest {
         driver.get(url);
         
         String title = driver.getTitle();
+        String expectedTitle = "Інтернет-магазин ROZETKA™: офіційний сайт найпопулярнішого онлайн-гіпермаркету в Україні";
         
-        try {
+        int maxWaitTime = 10;
+
+        WebDriverWait wait = new WebDriverWait(driver, maxWaitTime);
+        wait.until(ExpectedConditions.titleIs(expectedTitle));
+
+       /* try {
             wait(5000);
-        } catch (Exception e) {}
+        } catch (Exception e) {} */
        
-        System.out.println(title);
-        Assert.assertEquals(title, "Інтернет-магазин ROZETKA™: офіційний сайт найпопулярнішого онлайн-гіпермаркету в Україні",
-                            "Title text not equals as expected");
+        System.out.println("its title: " + title);
+        
+        Assert.assertEquals(title, expectedTitle, "Title text not equals as expected");
        /* Assert.assertTrue(title.contains("Інтернет-магазин ROZETKA™: офіційний сайт найпопулярнішого онлайн-гіпермаркету в Україні"));*/
         LOGGER.info("All ok.");
         driver.quit();
