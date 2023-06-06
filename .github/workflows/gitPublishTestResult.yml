@@ -31,11 +31,8 @@ jobs:
           browsers: chrome
           last-versions: 1
 
-      - name: Build with Maven
-        run: mvn package --batch-mode
-
-      - name: Run tests
-        run: mvn test --batch-mode
+      - name: Build and run tests
+        run: mvn clean test -Dsuite=selenoid
 
       - name: Upload Test Coverage
         uses: codecov/codecov-action@v2
