@@ -37,13 +37,15 @@ jobs:
       - name: Upload Test Coverage
         uses: codecov/codecov-action@v2
         with:
-          token: ${{ secrets.ACT }}
+         # token: ${{ secrets.ACT }}
+          path: -Dsuite=selenoid
           version: "v0.1.15"
 
       - name: Generate Test Report
         uses: codecov/codecov-action@v2
         with:
-          token: ${{ secrets.ACT }}
+         # token: ${{ secrets.ACT }}
+          path: -Dsuite=selenoid
           version: "v0.1.15"
           fail_ci_if_error: true
 
