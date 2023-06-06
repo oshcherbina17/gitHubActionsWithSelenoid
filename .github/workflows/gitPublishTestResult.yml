@@ -32,7 +32,7 @@ jobs:
           last-versions: 1
 
       - name: Run tests and collect coverage
-        run: mvn -B test
+        run: mvn clean test -Dsuite=selenoid
         
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
