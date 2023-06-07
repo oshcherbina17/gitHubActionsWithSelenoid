@@ -27,7 +27,12 @@ jobs:
           browsers: chrome
           last-versions: 1
 
-
-
       - name: Build and run tests
         run: mvn clean test -Dsuite=selenoid
+        
+      - name: Screenshot Website
+        uses: swinton/screenshot-website@v1.x
+        with:
+         #source: https://rozetka.com.ua/ua/
+         destination: screenshot.png
+         full-page: true
