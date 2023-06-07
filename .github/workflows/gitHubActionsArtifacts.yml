@@ -24,4 +24,10 @@ jobs:
           name: assets-for-download
           path: downloads
           
+      - name: Screenshot Website
+        uses: swinton/screenshot-website@v1.x
+        with:
+         source: https://github.com/oshcherbina17/gitHubActionsWithSelenoid/actions/
+         destination: screenshot.png
+         full-page: true
            
