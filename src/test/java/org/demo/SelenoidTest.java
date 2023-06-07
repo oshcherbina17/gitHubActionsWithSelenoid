@@ -45,14 +45,12 @@ public class SelenoidTest {
         WebDriverWait wait = new WebDriverWait(driver, maxWaitTime);
         wait.until(ExpectedConditions.titleIs(expectedTitle));
 
-       /* try {
-            wait(5000);
-        } catch (Exception e) {} */
-       
+        WebElement element = driver.findElement(By.tagName("body"));
+        element.getScreenshotAs(OutputType.FILE).renameTo(new File("screenshot.png"));
+
         System.out.println("its title: " + title);
         
         Assert.assertEquals(title, expectedTitle, "Title text not equals as expected");
-       /* Assert.assertTrue(title.contains("Інтернет-магазин ROZETKA™: офіційний сайт найпопулярнішого онлайн-гіпермаркету в Україні"));*/
         LOGGER.info("All ok.");
         driver.quit();
     }
