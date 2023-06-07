@@ -9,6 +9,9 @@ jobs:
   archive-build-artifacts:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+      - uses: ./
+        id: hello
 
       - name: Step 1 - Create a temporary artifact downloads folder
         run: mkdir downloads
@@ -25,7 +28,4 @@ jobs:
           name: assets-for-download
           path: downloads
           
-      - name: Screenshot
-        uses: OrbitalOwen/desktop-screenshot-action@0.1
-        with:
-           file-name: 'desktop.jpg'
+           
