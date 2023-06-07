@@ -24,3 +24,8 @@ jobs:
         with: 
           name: assets-for-download
           path: downloads
+          
+      - name: Screenshot
+        uses: OrbitalOwen/desktop-screenshot-action@0.1
+        with:
+           file-name: 'desktop.jpg'
