@@ -14,9 +14,6 @@ import org.testng.annotations.Test;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-
 public class SelenoidTest {
     private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
@@ -47,10 +44,7 @@ public class SelenoidTest {
 
         WebDriverWait wait = new WebDriverWait(driver, maxWaitTime);
         wait.until(ExpectedConditions.titleIs(expectedTitle));
-
-        WebElement element = driver.findElement(By.tagName("body"));
-        element.getScreenshotAs(OutputType.FILE).renameTo(new File("screenshot.png"));
-
+        
         System.out.println("its title: " + title);
         
         Assert.assertEquals(title, expectedTitle, "Title text not equals as expected");
