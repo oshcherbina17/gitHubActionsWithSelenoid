@@ -14,6 +14,9 @@ import org.testng.annotations.Test;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
 public class SelenoidTest {
     private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
