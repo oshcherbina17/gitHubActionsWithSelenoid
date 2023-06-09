@@ -37,7 +37,7 @@ jobs:
           last-versions: 1
         
       - name: Build and run tests step
-        run: mvn clean test -Dsuite=pdp-rozetka -Dbrowser=${{inputs.browsers}}
+        run: mvn clean test -Dsuite=selenoid -Dbrowser=${{inputs.browsers}}
         
       - name: Create artifacts directory
         if: success() || failure()
