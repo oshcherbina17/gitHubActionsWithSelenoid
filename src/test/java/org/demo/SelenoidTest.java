@@ -53,13 +53,12 @@ public class SelenoidTest {
 
         WebDriverWait wait = new WebDriverWait(driver, maxWaitTime);
         wait.until(ExpectedConditions.titleIs(expectedTitle));
-        
-        System.out.println("its title: " + title);
-        
+                
         Assert.assertEquals(title, expectedTitle, "Title text not equals as expected");
        // LOGGER.info("All ok.");
         BasicConfigurator.configure();  
-        logger.info("Hello world");          
+        logger.info("Hello world");    
+        System.out.println("Test sout");
         //Take the screenshot
         File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         
