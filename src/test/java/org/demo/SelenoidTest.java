@@ -43,6 +43,13 @@ public class SelenoidTest {
         driver.manage().window().maximize();
         driver.get(url);
         
+        File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        try {
+            FileUtils.copyFile(screenshot, new File("reports/screenshot.png"));
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+        
         String title = driver.getTitle();
         String expectedTitle = "Інтернет-магазин ROZETKA™: офіційний сайт найпопулярнішого онлайн-гіпермаркету в Україні";
         
@@ -50,16 +57,11 @@ public class SelenoidTest {
 
         WebDriverWait wait = new WebDriverWait(driver, maxWaitTime);
         wait.until(ExpectedConditions.titleIs(expectedTitle));
-        
-        File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        try {
-            FileUtils.copyFile(screenshot, new File("reports/screenshot.png"));
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
-                
+               
         Assert.assertEquals(title, expectedTitle, "Title text not equals as expected");
         LOGGER.info("All ok.");
+        
+        
         
         driver.quit();
     }
