@@ -42,6 +42,7 @@ public class SelenoidTest {
 
         driver.manage().window().maximize();
         driver.get(url);
+        driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS) ;
         
         File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         try {
