@@ -13,6 +13,11 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import java.io.File;
+import java.io.IOException;
 
 public class SelenoidTest {
     private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
@@ -49,6 +54,17 @@ public class SelenoidTest {
         
         Assert.assertEquals(title, expectedTitle, "Title text not equals as expected");
         LOGGER.info("All ok.");
+        
+        //Take the screenshot
+        File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        
+        //Copy the file to a location and use try catch block to handle exception
+        try {
+            FileUtils.copyFile(screenshot, new File("reports/screenshot.png"));
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+        
         driver.quit();
     }
 }
