@@ -52,7 +52,11 @@ public class SelenoidTest {
         wait.until(ExpectedConditions.titleIs(expectedTitle));
         
         File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(screenshot, new File("reports/screenshot.png"));
+        try {
+            FileUtils.copyFile(screenshot, new File("reports/screenshot.png"));
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
                 
         Assert.assertEquals(title, expectedTitle, "Title text not equals as expected");
         LOGGER.info("All ok.");
