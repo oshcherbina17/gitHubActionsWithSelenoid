@@ -50,17 +50,12 @@ public class SelenoidTest {
 
         WebDriverWait wait = new WebDriverWait(driver, maxWaitTime);
         wait.until(ExpectedConditions.titleIs(expectedTitle));
+        
+        File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(screenshot, new File("reports/screenshot.png"));
                 
         Assert.assertEquals(title, expectedTitle, "Title text not equals as expected");
         LOGGER.info("All ok.");
-        
-        File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        
-        try {
-            FileUtils.copyFile(screenshot, new File("reports/screenshot.png"));
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
         
         driver.quit();
     }
