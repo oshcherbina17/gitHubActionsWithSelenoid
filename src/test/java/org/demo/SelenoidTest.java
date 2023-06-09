@@ -18,9 +18,13 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import java.io.File;
 import java.io.IOException;
+import org.apache.log4j.BasicConfigurator;  
+import org.apache.log4j.LogManager;  
+import org.apache.log4j.Logger;  
 
 public class SelenoidTest {
-    private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+   // private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger logger = LogManager.getLogger(SelenoidTest.class);  
 
     public String url = "https://rozetka.com.ua/ua/";
 
@@ -53,8 +57,9 @@ public class SelenoidTest {
         System.out.println("its title: " + title);
         
         Assert.assertEquals(title, expectedTitle, "Title text not equals as expected");
-        LOGGER.info("All ok.");
-        
+       // LOGGER.info("All ok.");
+        BasicConfigurator.configure();  
+        logger.info("Hello world");          
         //Take the screenshot
         File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         
