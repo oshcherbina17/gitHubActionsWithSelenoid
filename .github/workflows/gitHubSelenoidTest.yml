@@ -2,6 +2,15 @@ name: SelenoidTest
 
 on:
   workflow_dispatch:
+    inputs:
+      browsers:
+        description: 'Browser for tests'
+        required: true
+        default: 'chrome'
+        type: choice
+        options:
+          - chrome
+          - firefox
 
 jobs:
    MavenBuildWithSelenoid:
@@ -26,13 +35,17 @@ jobs:
           args: -limit 10
           browsers: chrome
           last-versions: 1
-
-      - name: Build and run tests
-        run: mvn clean test -Dsuite=selenoid
         
-      - name: Screenshot Website
-        uses: swinton/screenshot-website@v1.x
+      - name: Build and run tests step
+        run: mvn clean test -Dsuite=pdp-rozetka -Dbrowser=${{inputs.browsers}}
+        
+      - name: Create artifacts directory
+        if: success() || failure()
+        run: mkdir artifacts && cp -r reports artifacts
+
+      - name: Upload artifacts
+        if: success() || failure()
+        uses: actions/upload-artifact@v3
         with:
-         source: https://rozetka.com.ua/ua/
-         destination: screenshot.png
-         full-page: true
+          name: my-artifacts
+          path: artifacts
